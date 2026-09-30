@@ -1,0 +1,14 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "CHECK 1 of 2 - page must have a title"
+        - grep -qi "<title" index.html || { echo "FAILED - index.html has no <title>. Add it back and commit."; exit 1; }
+        - echo "CHECK 2 of 2 - no AWS access keys in any file"
+        - if grep -rnE 'AKIA[0-9A-Z]{16}' --exclude-dir=.git --exclude=README.md .; then echo "FAILED - leaked AWS key found (file and line above). Deploy blocked."; exit 1; fi
+        - echo "ALL CHECKS PASSED - deploying"
+  artifacts:
+    baseDirectory: /
+    files:
+      - 'index.html'
