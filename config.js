@@ -1,1 +1,1 @@
-const key = {'AKIAIOSFODNN7EXAMPLE'}
+
