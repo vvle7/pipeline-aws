@@ -3,7 +3,7 @@ frontend:
   phases:
     build:
       commands:
-        - echo "CHECK 1 of 2 - page must have a title"
+        - echo "CHECK 1 of 3 - page must have a title"
         - grep -qi "<title" index.html || { echo "FAILED - index.html has no <title>. Add it back and commit."; exit 1; }
         - echo "CHECK 1 of 3 - page must have name"
         - grep -qi "Victor" index.html || { echo "FAILED - index.html has no name 'Victor'. Add it back and commit."; exit 1; }
